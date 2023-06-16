@@ -5,7 +5,7 @@ export const appRoutes: Routes = [
     path: '',
     children: [
       {
-        path: 'board-room/board-meetings/new-meeting',
+        path: 'board-room',
         loadChildren: () =>
           import('./modules/board-room/board-room.module').then(
             (m) => m.BoardRoomModule
@@ -13,7 +13,7 @@ export const appRoutes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'board-room/board-meetings/new-meeting',
+        redirectTo: 'board-room',
         pathMatch: 'full',
       },
     ],
