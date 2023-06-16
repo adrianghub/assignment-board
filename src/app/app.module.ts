@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-import { NewMeetingComponent } from './modules/board-room/board-meetings/new-meeting/new-meeting.component';
+import { BoardRoomModule } from './modules/board-room/board-room.module';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './app.routes';
 
 @NgModule({
-  declarations: [AppComponent, NewMeetingComponent],
-  imports: [BrowserModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, RouterModule.forRoot(appRoutes), BoardRoomModule],
   providers: [],
   bootstrap: [AppComponent],
 })
