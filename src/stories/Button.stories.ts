@@ -19,14 +19,18 @@ type Story = StoryObj<ButtonComponent>;
 // More on writing stories with args: https://storybook.js.org/docs/angular/writing-stories/args
 export const Primary: Story = {
   args: {
-    type: 'primary',
     label: 'Button',
+    type: 'primary',
+    active: false,
+    disabled: false,
   },
 };
 
 export const Secondary: Story = {
   args: {
-    type: 'accent',
     label: 'Button',
+    type: 'accent',
+    active: false,
+    disabled: false,
   },
 };

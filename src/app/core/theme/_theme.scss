@@ -14,14 +14,6 @@ $theme-warn: mat.define-palette(palettes.$mat-warn, main, lighter, darker);
 
 $inter-typography: mat.define-typography-config(
   $font-family: typography.$font-family-inter,
-  $button: // button
-  mat.define-typography-level(
-      $font-family: typography.$font-family-inter,
-      $font-weight: 500,
-      $font-size: 14px,
-      $line-height: 20px,
-      $letter-spacing: 0.1px,
-    ),
 );
 
 $theme: mat.define-light-theme(

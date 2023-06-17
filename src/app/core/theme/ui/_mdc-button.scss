@@ -2,8 +2,6 @@
 @use "_palettes" as palettes;
 
 .mat-mdc-button-base {
-  width: inherit;
-
   --mdc-shape-small: 4px;
 }
 
@@ -17,7 +15,8 @@
     border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
   }
 
-  &.mat-accent {
+  &.mat-accent,
+  &.active {
     --mdc-text-button-label-text-color: #{palettes.$whitish};
     background: mat.get-color-from-palette(palettes.$mat-accent, main);
     border: 2px solid mat.get-color-from-palette(palettes.$mat-accent, main);
@@ -33,4 +32,9 @@
       palettes.$grey-variant,
       50
     )};
+}
+
+.mat-mdc-button:focus:not([disabled]) {
+  outline-offset: 4px;
+  outline-color: palettes.$blackish;
 }

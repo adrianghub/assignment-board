@@ -1,10 +1,10 @@
 export const buttonSizes: ButtonSizes = {
   small: {
-    padding: '6px 22px',
+    padding: '4px 16px',
     fontSize: 16 / 16 + 'rem',
   },
   medium: {
-    padding: '10px 30px',
+    padding: '20px 12px',
     fontSize: 18 / 16 + 'rem',
   },
   large: {

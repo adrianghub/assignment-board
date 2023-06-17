@@ -16,9 +16,8 @@ import { buttonSizes } from './button.config';
   template: ` <button
     mat-button
     class="button"
-    color="accent"
+    [class.active]="active"
     [color]="type"
-    [class]="type"
     [style]="cssVariables"
     [disabled]="disabled"
     (click)="onClick()"
@@ -32,8 +31,9 @@ import { buttonSizes } from './button.config';
 export class ButtonComponent {
   @Input() type: ButtonType = 'primary';
   @Input() size: ButtonSize = 'medium';
-  @Input() disabled = false;
   @Input() label?: string;
+  @Input() disabled = false;
+  @Input() active = false;
 
   @Output()
   clicked = new EventEmitter<Event>();
