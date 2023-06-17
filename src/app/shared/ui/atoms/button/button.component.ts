@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import type { ButtonSize, ButtonType } from './button.config';
-import { PossibleButtonSizes } from './button.config';
+import { buttonSizes } from './button.config';
 
 @Component({
   standalone: true,
@@ -23,7 +23,7 @@ import { PossibleButtonSizes } from './button.config';
     [disabled]="disabled"
     (click)="onClick()"
   >
-    <ng-content />
+    {{ label }}
   </button>`,
   styleUrls: ['./button.component.scss'],
   imports: [CommonModule, MatButtonModule],
@@ -33,18 +33,19 @@ export class ButtonComponent {
   @Input() type: ButtonType = 'primary';
   @Input() size: ButtonSize = 'medium';
   @Input() disabled = false;
+  @Input() label?: string;
 
   @Output()
-  buttonClicked = new EventEmitter<Event>();
+  clicked = new EventEmitter<Event>();
 
   protected get cssVariables(): string {
     return `
-      --fontSize: ${PossibleButtonSizes[this.size].fontSize};
-      --padding: ${PossibleButtonSizes[this.size].padding};
+      --fontSize: ${buttonSizes[this.size].fontSize};
+      --padding: ${buttonSizes[this.size].padding};
     `;
   }
 
   protected onClick(): void {
-    this.buttonClicked.emit();
+    this.clicked.emit();
   }
 }

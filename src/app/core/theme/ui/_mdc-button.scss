@@ -4,7 +4,7 @@
 .mat-mdc-button-base {
   width: inherit;
 
-  --mdc-shape-small: 8px;
+  --mdc-shape-small: 4px;
 }
 
 .mat-mdc-button {
@@ -14,13 +14,13 @@
       main
     );
     background: palettes.$whitish;
-    border: 1px solid mat.get-color-from-palette(palettes.$mat-primary, main);
+    border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
   }
 
   &.mat-accent {
     --mdc-text-button-label-text-color: #{palettes.$whitish};
     background: mat.get-color-from-palette(palettes.$mat-accent, main);
-    border: 1px solid mat.get-color-from-palette(palettes.$mat-accent, main);
+    border: 2px solid mat.get-color-from-palette(palettes.$mat-accent, main);
   }
 }
 

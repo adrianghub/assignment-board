@@ -3,6 +3,7 @@
 .button {
   padding: var(--padding);
   font-size: var(--fontSize);
+  font-weight: 600;
   cursor: pointer;
 
   &:focus {

@@ -1,4 +1,4 @@
-export const PossibleButtonSizes: ButtonSizes = {
+export const buttonSizes: ButtonSizes = {
   small: {
     padding: '6px 22px',
     fontSize: 16 / 16 + 'rem',
