@@ -38,3 +38,12 @@
   outline-offset: 4px;
   outline-color: palettes.$blackish;
 }
+
+.mat-mdc-button.icon-only {
+  display: inline-flex;
+  align-items: center;
+  min-width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+}

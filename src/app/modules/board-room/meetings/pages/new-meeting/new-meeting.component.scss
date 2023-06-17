@@ -1,0 +1,26 @@
+@use "_palettes" as palettes;
+@use "@angular/material" as mat;
+
+.wrapper {
+  display: flex;
+}
+
+.headline {
+  margin-bottom: 64px;
+}
+
+.headline-small {
+  margin-bottom: 16px;
+}
+
+.main-content {
+  flex: 2;
+  padding: 40px 160px;
+  border-right: 1px solid mat.get-color-from-palette(palettes.$grey-variant, 70);
+  height: calc(100vh - 130px);
+}
+
+.aside {
+  flex: 1;
+  padding: 40px;
+}

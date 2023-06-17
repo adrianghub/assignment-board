@@ -7,9 +7,9 @@ import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
 import { ButtonComponent } from 'src/app/shared/ui/atoms/button/button.component';
 import { SelectableButtonGroupComponent } from 'src/app/shared/ui/molecules/selectable-button-group/selectable-button-group.component';
-import { BoardMeetingsComponent } from './board-meetings/pages/board-meetings/board-meetings.component';
-import { NewMeetingComponent } from './board-meetings/pages/new-meeting/new-meeting.component';
 import { boardRoomRoutes } from './board-room.routes';
+import { BoardMeetingsComponent } from './meetings/pages/board-meetings/board-meetings.component';
+import { NewMeetingComponent } from './meetings/pages/new-meeting/new-meeting.component';
 
 @NgModule({
   declarations: [NewMeetingComponent, BoardMeetingsComponent],
@@ -23,6 +23,5 @@ import { boardRoomRoutes } from './board-room.routes';
     SelectableButtonGroupComponent,
     RouterModule.forChild(boardRoomRoutes),
   ],
-  exports: [NewMeetingComponent, BoardMeetingsComponent],
 })
 export class BoardRoomModule {}

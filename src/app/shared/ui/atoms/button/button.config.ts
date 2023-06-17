@@ -13,11 +13,27 @@ export const buttonSizes: ButtonSizes = {
   },
 };
 
+export const iconSizes: ButtonSizes = {
+  small: {
+    padding: '4px 16px',
+    iconWidth: 16 / 16 + 'em',
+  },
+  medium: {
+    padding: '24px 8px',
+    iconWidth: 32 / 16 + 'em',
+  },
+  large: {
+    padding: '12px 38px',
+    iconWidth: 48 / 16 + 'em',
+  },
+};
+
 export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonType = 'primary' | 'accent' | 'warn';
 export type ButtonSizes = {
   [key in ButtonSize]: {
     padding: string;
-    fontSize: string;
+    fontSize?: string;
+    iconWidth?: string;
   };
 };
