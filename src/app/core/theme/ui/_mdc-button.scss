@@ -1,0 +1,36 @@
+@use "@angular/material" as mat;
+@use "_palettes" as palettes;
+
+.mat-mdc-button-base {
+  width: inherit;
+
+  --mdc-shape-small: 8px;
+}
+
+.mat-mdc-button {
+  &.mat-primary {
+    --mdc-text-button-label-text-color: mat.get-color-from-palette(
+      palettes.$mat-primary,
+      main
+    );
+    background: palettes.$whitish;
+    border: 1px solid mat.get-color-from-palette(palettes.$mat-primary, main);
+  }
+
+  &.mat-accent {
+    --mdc-text-button-label-text-color: #{palettes.$whitish};
+    background: mat.get-color-from-palette(palettes.$mat-accent, main);
+    border: 1px solid mat.get-color-from-palette(palettes.$mat-accent, main);
+  }
+}
+
+.mat-mdc-button[disabled][disabled] {
+  --mdc-filled-button-disabled-container-color: #{mat.get-color-from-palette(
+      palettes.$grey-variant,
+      80
+    )};
+  --mdc-filled-button-disabled-label-text-color: #{mat.get-color-from-palette(
+      palettes.$grey-variant,
+      50
+    )};
+}

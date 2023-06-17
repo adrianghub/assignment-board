@@ -1,0 +1,12 @@
+@use "_palettes" as palettes;
+
+.button {
+  padding: var(--padding);
+  font-size: var(--fontSize);
+  cursor: pointer;
+
+  &:focus {
+    outline-offset: 4px;
+    outline-color: palettes.$blackish;
+  }
+}

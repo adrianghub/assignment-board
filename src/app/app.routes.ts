@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import type { Routes } from '@angular/router';
 import { LayoutComponent } from './core/layout/layout.component';
 
 export const appRoutes: Routes = [
@@ -8,6 +8,7 @@ export const appRoutes: Routes = [
     children: [
       {
         path: 'board-room',
+        component: LayoutComponent,
         loadChildren: () =>
           import('./modules/board-room/board-room.module').then(
             (m) => m.BoardRoomModule

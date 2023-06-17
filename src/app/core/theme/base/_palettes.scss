@@ -20,13 +20,13 @@ $mat-primary: (
 );
 
 $mat-accent: (
-  main: #d9e2ff,
-  lighter: #f4f7ff,
-  darker: #e9efff,
+  main: $dark-gray,
+  lighter: $light-gray,
+  darker: $light-gray,
   contrast: (
-    main: $blackish,
+    main: $light-gray,
     lighter: $dark-gray,
-    darker: $light-gray,
+    darker: $dark-gray,
   ),
 );
 

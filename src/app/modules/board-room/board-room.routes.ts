@@ -1,10 +1,12 @@
-import { Routes } from '@angular/router';
-import { NewMeetingComponent } from './board-meetings/pages/new-meeting/new-meeting.component';
+import type { Routes } from '@angular/router';
+import { LayoutComponent } from 'src/app/core/layout/layout.component';
 import { BoardMeetingsComponent } from './board-meetings/pages/board-meetings/board-meetings.component';
+import { NewMeetingComponent } from './board-meetings/pages/new-meeting/new-meeting.component';
 
 export const boardRoomRoutes: Routes = [
   {
     path: 'board-room',
+    component: LayoutComponent,
     children: [
       {
         path: 'board-meetings',
