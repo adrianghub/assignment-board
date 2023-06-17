@@ -1,0 +1,11 @@
+@use "_palettes" as palettes;
+
+.button {
+  padding: var(--padding);
+  font-size: var(--fontSize);
+  font-weight: 500;
+
+  i-feather {
+    width: var(--iconWidth);
+  }
+}

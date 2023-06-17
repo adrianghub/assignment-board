@@ -26,7 +26,9 @@
             "prefix": "koia",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/no-output-on-prefix": "off",
+        "@typescript-eslint/consistent-type-imports": "off"
       }
     },
     {
@@ -37,5 +39,6 @@
       ],
       "rules": {}
     }
-  ]
+  ],
+  "extends": ["plugin:storybook/recommended"]
 }
