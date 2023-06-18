@@ -6,29 +6,31 @@
 }
 
 .mat-mdc-button {
+  transition: background-color 0.2s ease-in-out;
+
   &.mat-primary {
     --mdc-text-button-label-text-color: mat.get-color-from-palette(
       palettes.$mat-primary,
       main
     );
-    background: palettes.$whitish;
+    background-color: palettes.$whitish;
     border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
 
     &:hover {
-      --mdc-text-button-label-text-color: #{palettes.$whitish};
-      background: mat.get-color-from-palette(palettes.$mat-primary, main);
-      border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
+      background-color: darken(palettes.$whitish, 5%);
     }
 
-    &:focus {
+    &:focus:not([disabled]):not(.icon-only) {
       --mdc-text-button-label-text-color: #{palettes.$whitish};
-      background: mat.get-color-from-palette(palettes.$mat-primary, main);
+      background-color: mat.get-color-from-palette(palettes.$mat-primary, main);
       border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
+      outline-offset: 4px;
+      outline-color: palettes.$blackish;
     }
 
-    &:active {
+    &:active:not(.icon-only) {
       --mdc-text-button-label-text-color: #{palettes.$whitish};
-      background: mat.get-color-from-palette(palettes.$mat-primary, main);
+      background-color: mat.get-color-from-palette(palettes.$mat-primary, main);
       border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
     }
   }
@@ -36,23 +38,18 @@
   &.mat-accent,
   &.active {
     --mdc-text-button-label-text-color: #{palettes.$whitish};
-    background: mat.get-color-from-palette(palettes.$mat-accent, main);
+    background-color: mat.get-color-from-palette(palettes.$mat-accent, main);
     border: 2px solid mat.get-color-from-palette(palettes.$mat-accent, main);
   }
-}
 
-.mat-mdc-button:focus:not([disabled]) {
-  outline-offset: 4px;
-  outline-color: palettes.$blackish;
-}
-
-.mat-mdc-button.icon-only {
-  display: inline-flex;
-  align-items: center;
-  min-width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
+  &.mat-accent {
+    &:hover {
+      background-color: lighten(
+        mat.get-color-from-palette(palettes.$mat-accent, main),
+        15%
+      );
+    }
+  }
 }
 
 .mat-mdc-button[disabled][disabled] {
@@ -66,4 +63,13 @@
     )};
   background-color: mat.get-color-from-palette(palettes.$grey-variant, 90);
   border: 2px solid mat.get-color-from-palette(palettes.$mat-accent, lighter);
+}
+
+.mat-mdc-button.icon-only {
+  display: inline-flex;
+  align-items: center;
+  min-width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
 }

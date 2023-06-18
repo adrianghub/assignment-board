@@ -11,7 +11,7 @@ type BoardMeetingsRoutes = 'new-meeting';
       <koia-button
         actions
         type="primary"
-        label="+ new meeting"
+        [label]="'boardMeetings.header.actions.new' | translate"
         (click)="redirectTo('new-meeting')"
       />
     </koia-layout-header>
