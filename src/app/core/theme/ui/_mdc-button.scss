@@ -6,7 +6,7 @@
 }
 
 .mat-mdc-button {
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
 
   &.mat-primary {
     --mdc-text-button-label-text-color: mat.get-color-from-palette(

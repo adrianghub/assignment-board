@@ -23,9 +23,11 @@ import { buttonSizes, iconSizes } from './button.config';
     [disabled]="disabled"
     (click)="onClick()"
   >
-    <i-feather *ngIf="icon" [name]="icon" [style]="iconCssVariables" />
+    <div [ngClass]="{ content: label }">
+      <i-feather *ngIf="icon" [name]="icon" [style]="iconCssVariables" />
 
-    {{ label }}
+      <span>{{ label }}</span>
+    </div>
   </button>`,
   styleUrls: ['./button.component.scss'],
   imports: [CommonModule, MatButtonModule, IconsModule],
