@@ -5,11 +5,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
+import { UrlService } from 'src/app/core/services/url.service';
 import { ButtonComponent } from 'src/app/shared/ui/atoms/button/button.component';
 import { SelectableButtonGroupComponent } from 'src/app/shared/ui/molecules/selectable-button-group/selectable-button-group.component';
 import { boardRoomRoutes } from './board-room.routes';
 import { BoardMeetingsComponent } from './meetings/pages/board-meetings/board-meetings.component';
 import { NewMeetingComponent } from './meetings/pages/new-meeting/new-meeting.component';
+import { MeetingsService } from './meetings/services/meetings.service';
 
 @NgModule({
   declarations: [NewMeetingComponent, BoardMeetingsComponent],
@@ -23,5 +25,6 @@ import { NewMeetingComponent } from './meetings/pages/new-meeting/new-meeting.co
     ButtonComponent,
     SelectableButtonGroupComponent,
   ],
+  providers: [MeetingsService, UrlService],
 })
 export class BoardRoomModule {}

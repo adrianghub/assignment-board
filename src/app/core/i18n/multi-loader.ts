@@ -11,9 +11,7 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
     private http: HttpClient,
     private path: string,
     public resources: string[]
-  ) {
-    console.log('MultiTranslateHttpLoader', this.resources);
-  }
+  ) {}
 
   public getTranslation(lang: string): Observable<Translation> {
     return forkJoin(
