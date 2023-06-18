@@ -1,3 +1,9 @@
 {
-  "newMetting": {}
+  "newMeeting": {
+    "type": {
+      "board": "Board Meeting",
+      "general": "General Assembly",
+      "other": "Other"
+    }
+  }
 }
