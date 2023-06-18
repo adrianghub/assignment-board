@@ -1,5 +1,3 @@
-@use "_palettes" as palettes;
-
 .button {
   padding: var(--padding);
   font-size: var(--fontSize);
@@ -7,5 +5,8 @@
 
   i-feather {
     width: var(--iconWidth);
+    height: var(--iconWidth);
+    display: flex;
+    align-items: center;
   }
 }
