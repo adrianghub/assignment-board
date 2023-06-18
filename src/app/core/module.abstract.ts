@@ -18,8 +18,6 @@ export abstract class Module {
 }
 
 export const configTranslateModule = (resources: string[]) => {
-  console.log('resources', resources);
-
   return {
     loader: {
       provide: TranslateLoader,

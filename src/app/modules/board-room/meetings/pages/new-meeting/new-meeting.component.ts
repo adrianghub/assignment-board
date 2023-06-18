@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { basePath, meetingTypes } from '../../constants';
+import { Component, OnInit } from '@angular/core';
+import { UrlService } from 'src/app/core/services/url.service';
+import { formatDate } from 'src/app/shared/utils/date.utils';
+import { basePath } from '../../constants';
+import { MeetingType, TimeRange } from '../../models/meetings.mode';
+import { MeetingsService } from '../../services/meetings.service';
 
 @Component({
   selector: 'koia-new-meeting',
@@ -9,13 +13,38 @@ import { basePath, meetingTypes } from '../../constants';
 
     <div class="wrapper">
       <div class="main-content">
-        <h1 class="semi-bold-headline-large headline">New Meeting</h1>
+        <h1 class="semi-bold-headline-large headline">
+          {{ 'newMeeting.header' | translate }}
+        </h1>
 
-        <h2 class="semi-bold-headline-small headline-small">Meeting type</h2>
+        <h2 class="semi-bold-headline-small headline-small">
+          {{ 'newMeeting.section.meetingType.header' | translate }}
+        </h2>
 
-        <koia-selectable-button-group
-          [items]="meetingTypes"
-        ></koia-selectable-button-group>
+        <koia-meeting-types
+          class="section"
+          [types]="meetingTypes"
+          (selected)="urlService.setQueryParams({ type: $event.key })"
+        ></koia-meeting-types>
+
+        <h2 class="semi-bold-headline-small headline-small">
+          {{ 'newMeeting.section.meetingName.header' | translate }}
+        </h2>
+
+        <koia-meeting-name
+          class="section"
+          (nameChanged)="updateQueryParams({ name: $event })"
+        ></koia-meeting-name>
+
+        <h2 class="semi-bold-headline-small headline-small">
+          {{ 'newMeeting.section.meetingDate.header' | translate }}
+        </h2>
+
+        <koia-meeting-date
+          class="section"
+          (dateChanged)="updateQueryParams({ date: $event })"
+          (timeChanged)="updateQueryParams({ timeRange: $event })"
+        ></koia-meeting-date>
       </div>
 
       <div class="aside">
@@ -27,7 +56,55 @@ import { basePath, meetingTypes } from '../../constants';
     </div>
   `,
 })
-export class NewMeetingComponent {
+export class NewMeetingComponent implements OnInit {
   backUrl = basePath;
-  meetingTypes = meetingTypes;
+  meetingTypes: MeetingType[] = [];
+
+  today = formatDate(new Date());
+
+  constructor(
+    private meetingsService: MeetingsService,
+    public urlService: UrlService
+  ) {}
+
+  ngOnInit() {
+    this.urlService.setQueryParams({ type: 'board', date: this.today });
+
+    this.urlService.getQueryParams().subscribe((params) => {
+      this.meetingTypes = this.meetingTypes.map((item) =>
+        item.key === params['type']
+          ? {
+              ...item,
+              active: true,
+            }
+          : item
+      );
+    });
+
+    this.meetingTypes = this.loadMeetingTypes();
+  }
+
+  loadMeetingTypes(): MeetingType[] {
+    return this.meetingsService.getMeetingTypes().map((type) => ({
+      ...type,
+      active: false,
+    }));
+  }
+
+  updateQueryParams(params: { [key: string]: string | TimeRange }) {
+    if (params['timeRange']) {
+      const timeRange: TimeRange = params['timeRange'] as TimeRange;
+
+      if (timeRange['start']) {
+        this.urlService.setQueryParams({ start: timeRange['start'] });
+      }
+
+      if (timeRange['end']) {
+        this.urlService.setQueryParams({ end: timeRange['end'] });
+      }
+      return;
+    }
+
+    this.urlService.setQueryParams({ ...params });
+  }
 }

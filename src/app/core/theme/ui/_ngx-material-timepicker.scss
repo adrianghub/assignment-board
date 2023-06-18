@@ -1,0 +1,45 @@
+@use "@angular/material" as mat;
+@use "_palettes" as palettes;
+
+.timepicker {
+  .timepicker__header {
+    background-color: mat.get-color-from-palette(
+      palettes.$mat-primary,
+      main
+    ) !important;
+  }
+
+  .clock-face__clock-hand {
+    background-color: mat.get-color-from-palette(
+      palettes.$mat-primary,
+      main
+    ) !important;
+
+    &::after {
+      background-color: mat.get-color-from-palette(
+        palettes.$mat-primary,
+        main
+      ) !important;
+    }
+
+    &::before {
+      border-color: mat.get-color-from-palette(
+        palettes.$mat-primary,
+        main
+      ) !important;
+    }
+  }
+
+  .clock-face__number {
+    > span.active {
+      background-color: mat.get-color-from-palette(
+        palettes.$mat-primary,
+        main
+      ) !important;
+    }
+  }
+
+  button:not(.timepicker-dial__item) {
+    color: mat.get-color-from-palette(palettes.$mat-primary, main) !important;
+  }
+}

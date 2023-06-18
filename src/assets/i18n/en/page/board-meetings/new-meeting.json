@@ -1,3 +1,23 @@
 {
-  "newMetting": {}
+  "newMeeting": {
+    "header": "New meeting",
+    "section": {
+      "meetingType": {
+        "header": "Meeting type",
+        "type": {
+          "board": "Board Meeting",
+          "general": "General Assembly",
+          "other": "Other"
+        }
+      },
+      "meetingName": {
+        "header": "Meeting name",
+        "label": "Name"
+      },
+      "meetingDate": {
+        "header": "Meeting date",
+        "label": "Date"
+      }
+    }
+  }
 }

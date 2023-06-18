@@ -1,0 +1,7 @@
+{
+  "misc": {
+    "validationError": {
+      "required": "This value is required."
+    }
+  }
+}

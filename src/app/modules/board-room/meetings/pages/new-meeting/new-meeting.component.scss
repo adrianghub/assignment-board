@@ -11,7 +11,7 @@
 }
 
 .headline-small {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .main-content {
@@ -25,4 +25,9 @@
 .aside {
   flex: 1;
   padding: 40px;
+}
+
+.section {
+  display: flex;
+  margin-bottom: 64px;
 }

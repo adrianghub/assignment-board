@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 
 import { FeatherModule } from 'angular-feather';
-import { ArrowLeft } from 'angular-feather/icons';
+import { ArrowLeft, Plus, X } from 'angular-feather/icons';
 
 // Select some icons (use an object, not an array)
 const icons = {
   ArrowLeft,
+  Plus,
+  X,
 };
 
 @NgModule({

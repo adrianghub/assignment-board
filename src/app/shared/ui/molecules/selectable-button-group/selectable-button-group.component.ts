@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from '../../atoms/button/button.component';
 
 interface SelectableButton {
-  label: string;
+  key: string;
   active: boolean;
 }
 
@@ -21,27 +22,32 @@ interface SelectableButton {
     <ng-container *ngFor="let item of items">
       <koia-button
         type="primary"
-        [label]="item.label"
+        [label]="translationKey + '.' + item.key | translate"
         [active]="item.active"
         (clicked)="toggleActive(item)"
         class="selectable-button"
       />
     </ng-container>
   `,
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, TranslateModule],
 })
 export class SelectableButtonGroupComponent {
   @Input() items: SelectableButton[] = [];
+  @Input() translationKey!: string;
+
+  @Output() selected = new EventEmitter<SelectableButton>();
 
   toggleActive(item: SelectableButton): void {
     if (item.active === false) {
       item.active = !item.active;
 
       this.items.forEach((i) => {
-        if (i.label !== item.label) {
+        if (i.key !== item.key) {
           i.active = false;
         }
       });
     }
+
+    this.selected.emit(item);
   }
 }
