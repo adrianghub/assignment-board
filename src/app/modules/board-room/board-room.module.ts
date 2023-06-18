@@ -16,12 +16,12 @@ import { NewMeetingComponent } from './meetings/pages/new-meeting/new-meeting.co
   imports: [
     CoreModule,
     CommonModule,
+    RouterModule.forChild(boardRoomRoutes),
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatButtonModule,
     ButtonComponent,
     SelectableButtonGroupComponent,
-    RouterModule.forChild(boardRoomRoutes),
   ],
 })
 export class BoardRoomModule {}
