@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UrlService } from 'src/app/core/services/url.service';
 import { basePath } from '../../constants';
+import { MeetingType } from '../../models/meetings.mode';
 import { MeetingsService } from '../../services/meetings.service';
-
-interface MeetingType {
-  id: number;
-  key: string;
-  active: boolean;
-}
 
 @Component({
   selector: 'koia-new-meeting',
@@ -21,10 +16,13 @@ interface MeetingType {
 
         <h2 class="semi-bold-headline-small headline-small">Meeting type</h2>
 
-        <koia-selectable-button-group
-          [items]="meetingTypes"
-          (toggled)="urlService.setQueryParams({ type: $event.key })"
-        ></koia-selectable-button-group>
+        <koia-meeting-types
+          class="section"
+          [types]="meetingTypes"
+          (selected)="urlService.setQueryParams({ type: $event.key })"
+        ></koia-meeting-types>
+
+        <h2 class="semi-bold-headline-small headline-small">Meeting name</h2>
       </div>
 
       <div class="aside">

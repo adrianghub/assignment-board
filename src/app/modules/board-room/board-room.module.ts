@@ -11,10 +11,15 @@ import { SelectableButtonGroupComponent } from 'src/app/shared/ui/molecules/sele
 import { boardRoomRoutes } from './board-room.routes';
 import { BoardMeetingsComponent } from './meetings/pages/board-meetings/board-meetings.component';
 import { NewMeetingComponent } from './meetings/pages/new-meeting/new-meeting.component';
+import { MeetingTypesComponent } from './meetings/pages/new-meeting/sections/meeting-types/meeting-types.component';
 import { MeetingsService } from './meetings/services/meetings.service';
 
 @NgModule({
-  declarations: [NewMeetingComponent, BoardMeetingsComponent],
+  declarations: [
+    NewMeetingComponent,
+    BoardMeetingsComponent,
+    MeetingTypesComponent,
+  ],
   imports: [
     CoreModule,
     CommonModule,

@@ -34,7 +34,7 @@ interface SelectableButton {
 export class SelectableButtonGroupComponent {
   @Input() items: SelectableButton[] = [];
 
-  @Output() toggled = new EventEmitter<SelectableButton>();
+  @Output() selected = new EventEmitter<SelectableButton>();
 
   toggleActive(item: SelectableButton): void {
     if (item.active === false) {
@@ -47,6 +47,6 @@ export class SelectableButtonGroupComponent {
       });
     }
 
-    this.toggled.emit(item);
+    this.selected.emit(item);
   }
 }
