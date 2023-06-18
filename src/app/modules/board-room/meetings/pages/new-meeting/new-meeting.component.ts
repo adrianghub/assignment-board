@@ -12,9 +12,13 @@ import { MeetingsService } from '../../services/meetings.service';
 
     <div class="wrapper">
       <div class="main-content">
-        <h1 class="semi-bold-headline-large headline">New Meeting</h1>
+        <h1 class="semi-bold-headline-large headline">
+          {{ 'newMeeting.header' | translate }}
+        </h1>
 
-        <h2 class="semi-bold-headline-small headline-small">Meeting type</h2>
+        <h2 class="semi-bold-headline-small headline-small">
+          {{ 'newMeeting.section.meetingType.header' | translate }}
+        </h2>
 
         <koia-meeting-types
           class="section"
@@ -22,7 +26,13 @@ import { MeetingsService } from '../../services/meetings.service';
           (selected)="urlService.setQueryParams({ type: $event.key })"
         ></koia-meeting-types>
 
-        <h2 class="semi-bold-headline-small headline-small">Meeting name</h2>
+        <h2 class="semi-bold-headline-small headline-small">
+          {{ 'newMeeting.section.meetingName.header' | translate }}
+        </h2>
+
+        <koia-meeting-name
+          (nameChanged)="nameChanged($event)"
+        ></koia-meeting-name>
       </div>
 
       <div class="aside">
@@ -65,5 +75,9 @@ export class NewMeetingComponent implements OnInit {
       ...type,
       active: false,
     }));
+  }
+
+  nameChanged(name: string) {
+    this.urlService.setQueryParams({ name });
   }
 }

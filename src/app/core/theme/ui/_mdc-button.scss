@@ -8,6 +8,11 @@
 .mat-mdc-button {
   transition: background-color 0.1s ease-in-out;
 
+  &:focus:not([disabled]):not(.icon-only) {
+    outline-offset: 4px;
+    outline: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
+  }
+
   &.mat-primary {
     --mdc-text-button-label-text-color: mat.get-color-from-palette(
       palettes.$mat-primary,
@@ -16,16 +21,8 @@
     background-color: palettes.$whitish;
     border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
 
-    &:hover {
+    &:hover:not(.active) {
       background-color: darken(palettes.$whitish, 5%);
-    }
-
-    &:focus:not([disabled]):not(.icon-only) {
-      --mdc-text-button-label-text-color: #{palettes.$whitish};
-      background-color: mat.get-color-from-palette(palettes.$mat-primary, main);
-      border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
-      outline-offset: 4px;
-      outline-color: palettes.$blackish;
     }
 
     &:active:not(.icon-only) {

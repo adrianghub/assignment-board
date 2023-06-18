@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
@@ -16,12 +17,14 @@ import { BoardRoomModule } from './modules/board-room/board-room.module';
     HttpClientModule,
     TranslateModule.forRoot(
       configTranslateModule([
+        'misc',
         'page/board-meetings/board-meetings',
         'page/board-meetings/new-meeting',
       ])
     ),
     RouterModule.forRoot(appRoutes),
     BoardRoomModule,
+    BrowserAnimationsModule,
     CoreModule,
   ],
   bootstrap: [AppComponent],

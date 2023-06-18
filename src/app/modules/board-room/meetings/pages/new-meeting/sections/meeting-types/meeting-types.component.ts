@@ -6,6 +6,7 @@ import { MeetingType } from '../../../../models/meetings.mode';
   template: `
     <koia-selectable-button-group
       [items]="types"
+      translationKey="newMeeting.section.meetingType.type"
       (selected)="emitSelectedType($event)"
     ></koia-selectable-button-group>
   `,

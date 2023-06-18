@@ -15,16 +15,16 @@ export const buttonSizes: ButtonSizes = {
 
 export const iconSizes: ButtonSizes = {
   small: {
-    padding: '4px 16px',
-    iconWidth: 16 / 16 + 'em',
+    padding: '4px 8px',
+    iconWidth: 28 / 16 + 'rem',
   },
   medium: {
     padding: '24px 8px',
-    iconWidth: 32 / 16 + 'em',
+    iconWidth: 32 / 16 + 'rem',
   },
   large: {
     padding: '12px 38px',
-    iconWidth: 48 / 16 + 'em',
+    iconWidth: 48 / 16 + 'rem',
   },
 };
 

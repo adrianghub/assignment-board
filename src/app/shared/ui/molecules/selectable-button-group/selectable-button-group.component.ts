@@ -22,7 +22,7 @@ interface SelectableButton {
     <ng-container *ngFor="let item of items">
       <koia-button
         type="primary"
-        [label]="'newMeeting.type.' + item.key | translate"
+        [label]="translationKey + '.' + item.key | translate"
         [active]="item.active"
         (clicked)="toggleActive(item)"
         class="selectable-button"
@@ -33,6 +33,7 @@ interface SelectableButton {
 })
 export class SelectableButtonGroupComponent {
   @Input() items: SelectableButton[] = [];
+  @Input() translationKey!: string;
 
   @Output() selected = new EventEmitter<SelectableButton>();
 
