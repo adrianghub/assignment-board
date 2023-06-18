@@ -12,7 +12,11 @@
       },
       "meetingName": {
         "header": "Meeting name",
-        "label": "Meeting name"
+        "label": "Name"
+      },
+      "meetingDate": {
+        "header": "Meeting date",
+        "label": "Date"
       }
     }
   }

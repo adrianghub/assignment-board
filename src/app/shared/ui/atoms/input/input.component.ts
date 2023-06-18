@@ -20,6 +20,7 @@ type InputType = 'text';
   selector: 'koia-input',
   template: `
     <style>
+      :host,
       .form-field {
         width: 100%;
       }

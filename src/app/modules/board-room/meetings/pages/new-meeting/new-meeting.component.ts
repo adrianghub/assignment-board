@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UrlService } from 'src/app/core/services/url.service';
 import { basePath } from '../../constants';
@@ -31,8 +32,18 @@ import { MeetingsService } from '../../services/meetings.service';
         </h2>
 
         <koia-meeting-name
-          (nameChanged)="nameChanged($event)"
+          class="section"
+          (nameChanged)="updateQueryParams({ name: $event })"
         ></koia-meeting-name>
+
+        <h2 class="semi-bold-headline-small headline-small">
+          {{ 'newMeeting.section.meetingDate.header' | translate }}
+        </h2>
+
+        <koia-meeting-date
+          class="section"
+          (dateChanged)="updateQueryParams({ date: $event })"
+        ></koia-meeting-date>
       </div>
 
       <div class="aside">
@@ -48,13 +59,15 @@ export class NewMeetingComponent implements OnInit {
   backUrl = basePath;
   meetingTypes: MeetingType[] = [];
 
+  today = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+
   constructor(
     private meetingsService: MeetingsService,
     public urlService: UrlService
   ) {}
 
   ngOnInit() {
-    this.urlService.setQueryParams({ type: 'board' });
+    this.urlService.setQueryParams({ type: 'board', date: this.today });
 
     this.urlService.getQueryParams().subscribe((params) => {
       this.meetingTypes = this.meetingTypes.map((item) =>
@@ -77,7 +90,7 @@ export class NewMeetingComponent implements OnInit {
     }));
   }
 
-  nameChanged(name: string) {
-    this.urlService.setQueryParams({ name });
+  updateQueryParams(params: { [key: string]: string }) {
+    this.urlService.setQueryParams({ ...params });
   }
 }
