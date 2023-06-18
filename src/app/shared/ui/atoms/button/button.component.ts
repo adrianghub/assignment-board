@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { FeatherModule } from 'angular-feather';
+import { IconsModule } from 'src/app/core/icons/icons.module';
 import type { ButtonSize, ButtonType } from './button.config';
 import { buttonSizes, iconSizes } from './button.config';
 
@@ -28,7 +28,7 @@ import { buttonSizes, iconSizes } from './button.config';
     {{ label }}
   </button>`,
   styleUrls: ['./button.component.scss'],
-  imports: [CommonModule, MatButtonModule, FeatherModule],
+  imports: [CommonModule, MatButtonModule, IconsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {

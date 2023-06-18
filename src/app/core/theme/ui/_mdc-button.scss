@@ -13,6 +13,24 @@
     );
     background: palettes.$whitish;
     border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
+
+    &:hover {
+      --mdc-text-button-label-text-color: #{palettes.$whitish};
+      background: mat.get-color-from-palette(palettes.$mat-primary, main);
+      border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
+    }
+
+    &:focus {
+      --mdc-text-button-label-text-color: #{palettes.$whitish};
+      background: mat.get-color-from-palette(palettes.$mat-primary, main);
+      border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
+    }
+
+    &:active {
+      --mdc-text-button-label-text-color: #{palettes.$whitish};
+      background: mat.get-color-from-palette(palettes.$mat-primary, main);
+      border: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
+    }
   }
 
   &.mat-accent,
@@ -21,17 +39,6 @@
     background: mat.get-color-from-palette(palettes.$mat-accent, main);
     border: 2px solid mat.get-color-from-palette(palettes.$mat-accent, main);
   }
-}
-
-.mat-mdc-button[disabled][disabled] {
-  --mdc-filled-button-disabled-container-color: #{mat.get-color-from-palette(
-      palettes.$grey-variant,
-      80
-    )};
-  --mdc-filled-button-disabled-label-text-color: #{mat.get-color-from-palette(
-      palettes.$grey-variant,
-      50
-    )};
 }
 
 .mat-mdc-button:focus:not([disabled]) {
@@ -46,4 +53,17 @@
   height: 40px;
   border: none;
   border-radius: 50%;
+}
+
+.mat-mdc-button[disabled][disabled] {
+  --mdc-text-button-disabled-label-text-color: #{mat.get-color-from-palette(
+      palettes.$mat-accent,
+      lighter
+    )};
+  --mdc-text-button-label-text-color: #{mat.get-color-from-palette(
+      palettes.$mat-accent,
+      lighter
+    )};
+  background-color: mat.get-color-from-palette(palettes.$grey-variant, 90);
+  border: 2px solid mat.get-color-from-palette(palettes.$mat-accent, lighter);
 }

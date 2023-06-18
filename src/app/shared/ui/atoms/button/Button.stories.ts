@@ -10,7 +10,12 @@ const meta: Meta<ButtonComponent> = {
       ...args,
     },
   }),
-  argTypes: {},
+  argTypes: {
+    type: {
+      options: ['primary', 'accent'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
 export default meta;
