@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { CoreModule } from './core/core.module';
@@ -23,11 +24,12 @@ import { BoardRoomModule } from './modules/board-room/board-room.module';
         'page/board-meetings/new-meeting',
       ])
     ),
+    CoreModule,
     RouterModule.forRoot(appRoutes),
     BoardRoomModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
-    CoreModule,
+    NgxMaterialTimepickerModule,
   ],
   bootstrap: [AppComponent],
 })

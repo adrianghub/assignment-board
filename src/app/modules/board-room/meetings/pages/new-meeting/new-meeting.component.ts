@@ -1,8 +1,8 @@
-import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UrlService } from 'src/app/core/services/url.service';
+import { formatDate } from 'src/app/shared/utils/date.utils';
 import { basePath } from '../../constants';
-import { MeetingType } from '../../models/meetings.mode';
+import { MeetingType, TimeRange } from '../../models/meetings.mode';
 import { MeetingsService } from '../../services/meetings.service';
 
 @Component({
@@ -43,6 +43,7 @@ import { MeetingsService } from '../../services/meetings.service';
         <koia-meeting-date
           class="section"
           (dateChanged)="updateQueryParams({ date: $event })"
+          (timeChanged)="updateQueryParams({ timeRange: $event })"
         ></koia-meeting-date>
       </div>
 
@@ -59,7 +60,7 @@ export class NewMeetingComponent implements OnInit {
   backUrl = basePath;
   meetingTypes: MeetingType[] = [];
 
-  today = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  today = formatDate(new Date());
 
   constructor(
     private meetingsService: MeetingsService,
@@ -90,7 +91,20 @@ export class NewMeetingComponent implements OnInit {
     }));
   }
 
-  updateQueryParams(params: { [key: string]: string }) {
+  updateQueryParams(params: { [key: string]: string | TimeRange }) {
+    if (params['timeRange']) {
+      const timeRange: TimeRange = params['timeRange'] as TimeRange;
+
+      if (timeRange['start']) {
+        this.urlService.setQueryParams({ start: timeRange['start'] });
+      }
+
+      if (timeRange['end']) {
+        this.urlService.setQueryParams({ end: timeRange['end'] });
+      }
+      return;
+    }
+
     this.urlService.setQueryParams({ ...params });
   }
 }

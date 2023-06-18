@@ -1,0 +1,15 @@
+@use "_palettes" as palettes;
+@use "@angular/material" as mat;
+
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  display: inline-flex;
+  margin: -16px 8px 0 8px;
+  width: 8px;
+  height: 2px;
+  background-color: mat.get-color-from-palette(palettes.$mat-primary, main);
+}

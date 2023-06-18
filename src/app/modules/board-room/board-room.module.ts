@@ -10,6 +10,7 @@ import { ButtonComponent } from 'src/app/shared/ui/atoms/button/button.component
 import { DatePickerComponent } from 'src/app/shared/ui/atoms/date-picker/date-picker.component';
 import { InputComponent } from 'src/app/shared/ui/atoms/input/input.component';
 import { SelectableButtonGroupComponent } from 'src/app/shared/ui/molecules/selectable-button-group/selectable-button-group.component';
+import { TimePickerRangeComponent } from 'src/app/shared/ui/molecules/time-picker-range/time-picker-range.component';
 import { boardRoomRoutes } from './board-room.routes';
 import { BoardMeetingsComponent } from './meetings/pages/board-meetings/board-meetings.component';
 import { NewMeetingComponent } from './meetings/pages/new-meeting/new-meeting.component';
@@ -37,6 +38,7 @@ import { MeetingsService } from './meetings/services/meetings.service';
     InputComponent,
     SelectableButtonGroupComponent,
     DatePickerComponent,
+    TimePickerRangeComponent,
   ],
   providers: [MeetingsService, UrlService],
 })
