@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs';
 import { UrlService } from 'src/app/core/services/url.service';
-import { formatDate } from 'src/app/shared/utils/date.utils';
+import { Tab } from 'src/app/shared/models/shared.model';
+import {
+  formatDate,
+  getCurrentTime,
+  getTimeInFuture,
+} from 'src/app/shared/utils/date.utils';
 import { basePath } from '../../constants';
 import { MeetingType, TimeRange } from '../../models/meetings.mode';
 import { MeetingsService } from '../../services/meetings.service';
@@ -43,24 +49,42 @@ import { MeetingsService } from '../../services/meetings.service';
         <koia-meeting-date
           class="section"
           (dateChanged)="updateQueryParams({ date: $event })"
-          (timeChanged)="updateQueryParams({ timeRange: $event })"
+          (timeChanged)="updateQueryParams({ time: $event })"
         ></koia-meeting-date>
       </div>
 
       <div class="aside">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est amet
-        quisquam quidem porro aut deleniti expedita rem quas! Praesentium
-        explicabo facere voluptates obcaecati corporis fuga neque sapiente ab
-        fugit nam.
+        <h2 class="semi-bold-headline-small headline-small">
+          {{ 'newMeeting.section.meetingInvitees.header' | translate }}
+        </h2>
+
+        <koia-tabs
+          [tabs]="tabs"
+          (selected)="updateQueryParams({ invitees: $event.name })"
+        ></koia-tabs>
       </div>
     </div>
   `,
 })
 export class NewMeetingComponent implements OnInit {
-  backUrl = basePath;
   meetingTypes: MeetingType[] = [];
+  tabs: Tab[] = [
+    {
+      name: 'board',
+      translationKey: 'newMeeting.section.meetingInvitees',
+      active: true,
+    },
+    {
+      name: 'guests',
+      translationKey: 'newMeeting.section.meetingInvitees',
+      active: false,
+    },
+  ];
 
+  backUrl = basePath;
   today = formatDate(new Date());
+
+  currentParams: { [key: string]: string | TimeRange } = {};
 
   constructor(
     private meetingsService: MeetingsService,
@@ -68,18 +92,27 @@ export class NewMeetingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.urlService.setQueryParams({ type: 'board', date: this.today });
-
-    this.urlService.getQueryParams().subscribe((params) => {
-      this.meetingTypes = this.meetingTypes.map((item) =>
-        item.key === params['type']
-          ? {
-              ...item,
-              active: true,
-            }
-          : item
-      );
+    this.urlService.setQueryParams({
+      type: 'board',
+      date: this.today,
+      invitees: 'board',
+      start: getCurrentTime(),
+      end: getTimeInFuture(1),
     });
+
+    this.urlService
+      .getQueryParams()
+      .pipe(take(1))
+      .subscribe((params) => {
+        this.meetingTypes = this.meetingTypes.map((item) =>
+          item.key === params['type']
+            ? {
+                ...item,
+                active: true,
+              }
+            : item
+        );
+      });
 
     this.meetingTypes = this.loadMeetingTypes();
   }
@@ -92,17 +125,17 @@ export class NewMeetingComponent implements OnInit {
   }
 
   updateQueryParams(params: { [key: string]: string | TimeRange }) {
-    if (params['timeRange']) {
-      const timeRange: TimeRange = params['timeRange'] as TimeRange;
+    if (params['time']) {
+      const timeRange = params['time'] as TimeRange;
 
-      if (timeRange['start']) {
-        this.urlService.setQueryParams({ start: timeRange['start'] });
+      if (timeRange.start) {
+        params['start'] = timeRange.start;
+      }
+      if (timeRange.end) {
+        params['end'] = timeRange.end;
       }
 
-      if (timeRange['end']) {
-        this.urlService.setQueryParams({ end: timeRange['end'] });
-      }
-      return;
+      delete params['time'];
     }
 
     this.urlService.setQueryParams({ ...params });

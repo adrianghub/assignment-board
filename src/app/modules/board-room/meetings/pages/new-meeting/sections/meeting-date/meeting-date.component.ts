@@ -1,6 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { formatDate } from 'src/app/shared/utils/date.utils';
+import {
+  formatDate,
+  getCurrentTime,
+  getTimeInFuture,
+} from 'src/app/shared/utils/date.utils';
 import { TimeRange } from '../../../../models/meetings.mode';
 
 @Component({
@@ -22,6 +26,7 @@ import { TimeRange } from '../../../../models/meetings.mode';
     ></koia-date-picker>
 
     <koia-time-picker-range
+      [initialTimeRange]="timeRange"
       (changed)="changeTime($event)"
     ></koia-time-picker-range>
   `,
@@ -31,6 +36,8 @@ export class MeetingDateComponent implements OnInit {
   @Output() timeChanged = new EventEmitter<TimeRange>();
 
   startDate = new FormControl<Date | null>(null, { nonNullable: true });
+  timeRange = { start: getCurrentTime(), end: getTimeInFuture(1) };
+
   min = new Date();
 
   ngOnInit() {
