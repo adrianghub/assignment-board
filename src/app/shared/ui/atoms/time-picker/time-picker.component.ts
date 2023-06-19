@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { convertTime } from 'src/app/shared/utils/date.utils';
@@ -23,8 +25,9 @@ import { convertTime } from 'src/app/shared/utils/date.utils';
       appearance="outline"
       (click)="picker.open()"
       ><input
-        matInput
         [ngxTimepicker]="picker"
+        [formControl]="timeControl"
+        matInput
         class="input"
         readonly
         placeholder="HH:mm"
@@ -33,10 +36,23 @@ import { convertTime } from 'src/app/shared/utils/date.utils';
       #picker
       (timeChanged)="emitChangedTime($event)"
     />`,
-  imports: [NgxMaterialTimepickerModule, MatInputModule],
+  imports: [
+    NgxMaterialTimepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+  ],
 })
-export class TimePickerComponent {
+export class TimePickerComponent implements OnInit {
+  @Input() startTime!: string;
+
   @Output() changed = new EventEmitter<string>();
+
+  timeControl = new FormControl<string | null>(null, { nonNullable: true });
+
+  ngOnInit() {
+    this.timeControl.setValue(this.startTime);
+  }
 
   emitChangedTime($event: string) {
     this.changed.emit(convertTime($event));

@@ -44,6 +44,8 @@ import { ButtonComponent } from '../button/button.component';
       <mat-hint>{{ hint }}</mat-hint>
 
       <mat-datepicker-toggle matIconSuffix [for]="picker">
+        <i-feather matDatepickerToggleIcon name="calendar" />
+
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"

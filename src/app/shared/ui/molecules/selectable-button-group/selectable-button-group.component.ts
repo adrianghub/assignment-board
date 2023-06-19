@@ -38,15 +38,7 @@ export class SelectableButtonGroupComponent {
   @Output() selected = new EventEmitter<SelectableButton>();
 
   toggleActive(item: SelectableButton): void {
-    if (item.active === false) {
-      item.active = !item.active;
-
-      this.items.forEach((i) => {
-        if (i.key !== item.key) {
-          i.active = false;
-        }
-      });
-    }
+    this.items.forEach((i) => (i.active = i === item ? true : false));
 
     this.selected.emit(item);
   }

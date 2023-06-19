@@ -17,6 +17,13 @@
       "meetingDate": {
         "header": "Meeting date",
         "label": "Date"
+      },
+      "meetingInvitees": {
+        "header": "Invitees",
+        "tab": {
+          "board": "Board",
+          "guests": "Guests"
+        }
       }
     }
   }
