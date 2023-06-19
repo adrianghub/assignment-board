@@ -25,7 +25,7 @@ type InputType = 'text';
         width: 100%;
       }
 
-      .container {
+      .wrapper {
         display: flex;
         align-items: center;
         position: relative;
@@ -40,7 +40,7 @@ type InputType = 'text';
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>{{ label }}</mat-label>
 
-      <div class="container">
+      <div class="wrapper">
         <input
           matInput
           [type]="type"
