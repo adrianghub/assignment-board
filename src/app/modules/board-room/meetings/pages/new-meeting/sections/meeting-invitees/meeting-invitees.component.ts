@@ -6,7 +6,11 @@ import { MeetingsService } from '../../../../services/meetings.service';
 @Component({
   selector: 'koia-meeting-invitees',
   template: `
-    <koia-tabs [tabs]="tabs" (selected)="selectedTab.emit($event)" />
+    <div class="tabs-wrapper">
+      <koia-tabs [tabs]="tabs" (selected)="selectedTab.emit($event)" />
+    </div>
+
+    <koia-invitees-search></koia-invitees-search>
 
     <ng-container [ngSwitch]="inviteesType">
       <ng-container *ngSwitchCase="'guests'">

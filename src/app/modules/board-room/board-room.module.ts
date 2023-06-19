@@ -17,12 +17,13 @@ import { TimePickerRangeComponent } from 'src/app/shared/ui/molecules/time-picke
 import { boardRoomRoutes } from './board-room.routes';
 import { BoardMeetingsComponent } from './meetings/pages/board-meetings/board-meetings.component';
 import { NewMeetingComponent } from './meetings/pages/new-meeting/new-meeting.component';
-import { InviteesListComponent } from './meetings/pages/new-meeting/sections/invitees-list/invitees-list.component';
 import { MeetingDateComponent } from './meetings/pages/new-meeting/sections/meeting-date/meeting-date.component';
+import { InviteesListComponent } from './meetings/pages/new-meeting/sections/meeting-invitees/invitees-list/invitees-list.component';
 import { MeetingInviteesComponent } from './meetings/pages/new-meeting/sections/meeting-invitees/meeting-invitees.component';
 import { MeetingNameComponent } from './meetings/pages/new-meeting/sections/meeting-name/meeting-name.component';
 import { MeetingTypesComponent } from './meetings/pages/new-meeting/sections/meeting-types/meeting-types.component';
 import { MeetingsService } from './meetings/services/meetings.service';
+import { InviteesSearchComponent } from './meetings/pages/new-meeting/sections/meeting-invitees/invitees-search/invitees-search.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MeetingsService } from './meetings/services/meetings.service';
     MeetingDateComponent,
     MeetingInviteesComponent,
     InviteesListComponent,
+    InviteesSearchComponent,
   ],
   imports: [
     CoreModule,

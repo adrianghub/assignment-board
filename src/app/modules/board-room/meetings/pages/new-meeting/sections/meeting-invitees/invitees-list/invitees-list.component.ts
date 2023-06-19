@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Invitee } from '../../../../models/meetings.mode';
+import { Invitee } from '../../../../../models/meetings.mode';
 
 @Component({
   selector: 'koia-invitees-list',

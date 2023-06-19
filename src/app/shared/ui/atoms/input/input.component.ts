@@ -11,6 +11,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule } from '@ngx-translate/core';
+import { IconsModule } from 'src/app/core/icons/icons.module';
 import { ButtonComponent } from '../button/button.component';
 
 type InputType = 'text';
@@ -31,6 +32,10 @@ type InputType = 'text';
         position: relative;
       }
 
+      .icon {
+        margin: 0 8px;
+      }
+
       .clear {
         position: absolute;
         right: -5px;
@@ -40,13 +45,15 @@ type InputType = 'text';
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>{{ label }}</mat-label>
 
+      <i-feather matPrefix *ngIf="icon" [name]="icon" class="icon"></i-feather>
+
       <div class="wrapper">
         <input
           matInput
           [type]="type"
           [formControl]="control"
-          [placeholder]="placeholder"
-          [attr.aria-label]="label"
+          [placeholder]="placeholder ?? ''"
+          [attr.aria-label]="label ?? ''"
         />
 
         <koia-button
@@ -73,13 +80,15 @@ type InputType = 'text';
     MatFormFieldModule,
     ReactiveFormsModule,
     ButtonComponent,
+    IconsModule,
   ],
 })
 export class InputComponent implements OnInit {
   @Input() type: InputType = 'text';
   @Input({ required: true }) control!: FormControl<string | null>;
-  @Input({ required: true }) label!: string;
-  @Input() placeholder!: string;
+  @Input() label?: string;
+  @Input() icon?: string;
+  @Input() placeholder?: string;
   @Input() hint?: string;
 
   @Output() changed = new EventEmitter<string | null>();

@@ -24,6 +24,9 @@
           "board": "Board",
           "guests": "Guests"
         },
+        "search": {
+          "label": "Search..."
+        },
         "checkbox": {
           "all": "All"
         }
