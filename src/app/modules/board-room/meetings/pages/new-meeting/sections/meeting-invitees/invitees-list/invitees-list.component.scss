@@ -1,0 +1,36 @@
+@use "_palettes" as palettes;
+@use "@angular/material" as mat;
+
+.top-wrapper {
+  width: 100%;
+  margin-bottom: 16px;
+  border-bottom: 1px solid
+    mat.get-color-from-palette(palettes.$grey-variant, 70);
+}
+
+.wrapper {
+  margin-bottom: 8px;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.invitee-position {
+  color: mat.get-color-from-palette(palettes.$grey-variant, 60);
+}
+
+.checkbox.select-all {
+  margin-bottom: 4px;
+}
+
+.checkbox {
+  margin-left: -10px;
+}

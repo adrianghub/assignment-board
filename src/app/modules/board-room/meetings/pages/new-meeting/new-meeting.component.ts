@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { UrlService } from 'src/app/core/services/url.service';
-import { Tab } from 'src/app/shared/models/shared.model';
 import {
   formatDate,
   getCurrentTime,
   getTimeInFuture,
 } from 'src/app/shared/utils/date.utils';
 import { basePath } from '../../constants';
-import { MeetingType, TimeRange } from '../../models/meetings.mode';
+import {
+  InviteesType,
+  MeetingType,
+  TimeRange,
+} from '../../models/meetings.mode';
 import { MeetingsService } from '../../services/meetings.service';
 
 @Component({
@@ -58,33 +61,23 @@ import { MeetingsService } from '../../services/meetings.service';
           {{ 'newMeeting.section.meetingInvitees.header' | translate }}
         </h2>
 
-        <koia-tabs
-          [tabs]="tabs"
-          (selected)="updateQueryParams({ invitees: $event.name })"
-        ></koia-tabs>
+        <koia-meeting-invitees
+          [inviteesType]="inviteesType"
+          (selectedTab)="
+            updateQueryParams({ invitees: $event.name });
+            updateInviteesType($event.name)
+          "
+        ></koia-meeting-invitees>
       </div>
     </div>
   `,
 })
 export class NewMeetingComponent implements OnInit {
   meetingTypes: MeetingType[] = [];
-  tabs: Tab[] = [
-    {
-      name: 'board',
-      translationKey: 'newMeeting.section.meetingInvitees',
-      active: true,
-    },
-    {
-      name: 'guests',
-      translationKey: 'newMeeting.section.meetingInvitees',
-      active: false,
-    },
-  ];
+  inviteesType!: InviteesType;
 
   backUrl = basePath;
   today = formatDate(new Date());
-
-  currentParams: { [key: string]: string | TimeRange } = {};
 
   constructor(
     private meetingsService: MeetingsService,
@@ -97,7 +90,7 @@ export class NewMeetingComponent implements OnInit {
       date: this.today,
       invitees: 'board',
       start: getCurrentTime(),
-      end: getTimeInFuture(1),
+      end: getTimeInFuture(1, 'hour'),
     });
 
     this.urlService
@@ -112,6 +105,8 @@ export class NewMeetingComponent implements OnInit {
               }
             : item
         );
+
+        this.inviteesType = params['invitees'];
       });
 
     this.meetingTypes = this.loadMeetingTypes();
@@ -139,5 +134,9 @@ export class NewMeetingComponent implements OnInit {
     }
 
     this.urlService.setQueryParams({ ...params });
+  }
+
+  updateInviteesType(inviteesType: string) {
+    this.inviteesType = inviteesType as InviteesType;
   }
 }

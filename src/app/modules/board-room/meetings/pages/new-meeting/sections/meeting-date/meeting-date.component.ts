@@ -36,7 +36,7 @@ export class MeetingDateComponent implements OnInit {
   @Output() timeChanged = new EventEmitter<TimeRange>();
 
   startDate = new FormControl<Date | null>(null, { nonNullable: true });
-  timeRange = { start: getCurrentTime(), end: getTimeInFuture(1) };
+  timeRange = { start: getCurrentTime(), end: getTimeInFuture(1, 'hour') };
 
   min = new Date();
 
