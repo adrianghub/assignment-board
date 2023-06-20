@@ -27,7 +27,7 @@ Angular Version 16.0.4
 - [x] Type selection
 - [x] Name selection
 - [x] Date&time selection
-- [ ] Invitees selection
+- [x] Invitees selection
 - [ ] Location/address selection
 - [ ] Visual Regression Testing
 
