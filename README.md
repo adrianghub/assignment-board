@@ -12,11 +12,11 @@ Angular Version 16.0.4
 
 ### Storybook
 
-`npm run storybook`
+`npm run storybook` - WIP
 
 ### Unit tests
 
-- jest
+`ng test` (jest) - WIP
 
 ## Features
 
