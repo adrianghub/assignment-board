@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -8,14 +8,13 @@ import { FormControl } from '@angular/forms';
     [icon]="'search'"
     [label]="'newMeeting.section.meetingInvitees.search.label' | translate"
     (changed)="queryChanged.emit($event!)"
+    (cleared)="queryChanged.emit('')"
   ></koia-input>`,
 
   styleUrls: ['./invitees-search.component.scss'],
 })
 export class InviteesSearchComponent {
-  @Output() queryChanged = new EventEmitter<string>();
+  @Input() query!: FormControl<string>;
 
-  query = new FormControl<string>('', {
-    nonNullable: true,
-  });
+  @Output() queryChanged = new EventEmitter<string>();
 }

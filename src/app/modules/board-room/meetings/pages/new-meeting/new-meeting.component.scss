@@ -3,7 +3,6 @@
 
 .wrapper {
   display: flex;
-  min-height: calc(100vh - 125px);
 }
 
 .headline {
@@ -30,4 +29,8 @@
 .section {
   display: flex;
   margin-bottom: 64px;
+}
+
+.section-input {
+  margin-bottom: 48px;
 }

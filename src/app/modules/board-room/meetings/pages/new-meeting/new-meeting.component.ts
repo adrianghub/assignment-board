@@ -41,7 +41,7 @@ import { MeetingsService } from '../../services/meetings.service';
         </h2>
 
         <koia-meeting-name
-          class="section"
+          class="section section-input"
           (nameChanged)="updateQueryParams({ name: $event })"
         ></koia-meeting-name>
 
@@ -88,9 +88,9 @@ export class NewMeetingComponent implements OnInit {
     this.urlService.setQueryParams({
       type: 'board',
       date: this.today,
-      invitees: 'board',
       start: getCurrentTime(),
       end: getTimeInFuture(1, 'hour'),
+      invitees: 'board',
     });
 
     this.urlService
