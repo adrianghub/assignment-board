@@ -9,6 +9,7 @@ import { Invitee } from '../../../../../models/meetings.mode';
         class="select-all checkbox"
         [checked]="isAllSelected"
         (change)="toggleSelectAll()"
+        [disabled]="invitees.length === 0"
       >
         <span class="regular-title-medium">{{
           'newMeeting.section.meetingInvitees.checkbox.all' | translate
@@ -17,29 +18,22 @@ import { Invitee } from '../../../../../models/meetings.mode';
     </div>
 
     <ng-container *ngFor="let invitee of invitees">
-      <div
-        (click)="toggleSelection(invitee)"
-        (keypress)="toggleSelection(invitee)"
-        [tabindex]="invitee.id"
-        class="wrapper"
-      >
-        <label [for]="'checkbox-' + invitee.id">
-          <div class="content-wrapper">
-            <mat-checkbox
-              [id]="'checkbox-' + invitee.id"
-              (change)="toggleSelection(invitee)"
-              [checked]="!!selected.get(invitee.id)"
-              class="checkbox"
-            ></mat-checkbox>
-
+      <div class="wrapper">
+        <div class="content-wrapper">
+          <mat-checkbox
+            [id]="'checkbox-' + invitee.id"
+            (change)="toggleSelection(invitee)"
+            [checked]="!!selected.get(invitee.id)"
+            class="checkbox"
+          >
             <div class="content">
               <span class="regular-title-medium">{{ invitee.name }}</span>
               <span class="regular-body-medium invitee-position">{{
                 invitee?.position ?? ''
               }}</span>
             </div>
-          </div>
-        </label>
+          </mat-checkbox>
+        </div>
       </div>
     </ng-container>
   `,
@@ -48,8 +42,7 @@ import { Invitee } from '../../../../../models/meetings.mode';
 })
 export class InviteesListComponent {
   @Input({ required: true }) invitees!: Invitee[];
-
-  selected = new Map<number, Invitee>();
+  @Input() selected = new Map<number, Invitee>();
 
   get isAllSelected(): boolean {
     return (

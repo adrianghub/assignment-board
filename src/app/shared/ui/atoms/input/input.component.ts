@@ -61,7 +61,7 @@ type InputType = 'text';
           icon="x"
           size="small"
           class="clear"
-          (clicked)="control.reset('')"
+          (clicked)="control.reset(); cleared.emit($event)"
         />
       </div>
 
@@ -92,6 +92,7 @@ export class InputComponent implements OnInit {
   @Input() hint?: string;
 
   @Output() changed = new EventEmitter<string | null>();
+  @Output() cleared = new EventEmitter<Event>();
 
   ngOnInit() {
     this.control.valueChanges.subscribe((value) => {

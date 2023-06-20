@@ -8,7 +8,7 @@
 .mat-mdc-button {
   transition: background-color 0.1s ease-in-out;
 
-  &:focus:not([disabled]):not(.icon-only) {
+  &:focus-visible:not([disabled]):not(.icon-only) {
     outline-offset: 4px;
     outline: 2px solid mat.get-color-from-palette(palettes.$mat-primary, main);
   }
