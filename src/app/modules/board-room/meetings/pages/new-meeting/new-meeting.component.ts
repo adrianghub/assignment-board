@@ -21,6 +21,7 @@ import { MeetingsService } from '../../services/meetings.service';
     <koia-layout-header [backUrl]="backUrl" />
 
     <div class="wrapper">
+      <!-- MAIN CONTENT -->
       <div class="main-content">
         <h1 class="semi-bold-headline-large headline">
           {{ 'newMeeting.header' | translate }}
@@ -41,7 +42,7 @@ import { MeetingsService } from '../../services/meetings.service';
         </h2>
 
         <koia-meeting-name
-          class="section section-input"
+          class="section section-small-space"
           (nameChanged)="updateQueryParams({ name: $event })"
         ></koia-meeting-name>
 
@@ -54,8 +55,19 @@ import { MeetingsService } from '../../services/meetings.service';
           (dateChanged)="updateQueryParams({ date: $event })"
           (timeChanged)="updateQueryParams({ time: $event })"
         ></koia-meeting-date>
+
+        <h2 class="semi-bold-headline-small headline-small">
+          {{ 'newMeeting.section.meetingLocation.header' | translate }}
+        </h2>
+
+        <koia-meeting-location
+          class="section"
+          (addressChanged)="updateQueryParams({ address: $event })"
+          (onlineChanged)="updateQueryParams({ onlineLink: $event })"
+        ></koia-meeting-location>
       </div>
 
+      <!-- ASIDE -->
       <div class="aside">
         <h2 class="semi-bold-headline-small headline-small">
           {{ 'newMeeting.section.meetingInvitees.header' | translate }}

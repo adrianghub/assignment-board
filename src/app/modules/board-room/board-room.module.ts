@@ -24,6 +24,7 @@ import { MeetingNameComponent } from './meetings/pages/new-meeting/sections/meet
 import { MeetingTypesComponent } from './meetings/pages/new-meeting/sections/meeting-types/meeting-types.component';
 import { MeetingsService } from './meetings/services/meetings.service';
 import { InviteesSearchComponent } from './meetings/pages/new-meeting/sections/meeting-invitees/invitees-search/invitees-search.component';
+import { MeetingLocationComponent } from './meetings/pages/new-meeting/sections/meeting-location/meeting-location.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { InviteesSearchComponent } from './meetings/pages/new-meeting/sections/m
     MeetingInviteesComponent,
     InviteesListComponent,
     InviteesSearchComponent,
+    MeetingLocationComponent,
   ],
   imports: [
     CoreModule,

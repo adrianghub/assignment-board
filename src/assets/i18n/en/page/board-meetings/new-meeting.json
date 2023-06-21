@@ -30,6 +30,21 @@
         "checkbox": {
           "all": "All"
         }
+      },
+      "meetingLocation": {
+        "header": "Location",
+        "address": {
+          "input": {
+            "label": "Address..."
+          },
+          "checkbox": "Address"
+        },
+        "online": {
+          "input": {
+            "label": "Paste meeting link..."
+          },
+          "checkbox": "Online meeting"
+        }
       }
     }
   }
