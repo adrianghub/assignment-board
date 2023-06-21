@@ -30,6 +30,9 @@
         "checkbox": {
           "all": "All"
         }
+      },
+      "meetingLocation": {
+        "header": "Location"
       }
     }
   }

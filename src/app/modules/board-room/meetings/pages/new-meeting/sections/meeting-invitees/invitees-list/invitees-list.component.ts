@@ -6,12 +6,13 @@ import { Invitee } from '../../../../../models/meetings.mode';
   template: `
     <div class="top-wrapper">
       <mat-checkbox
+        color="primary"
         class="select-all checkbox"
         [checked]="isAllSelected"
         (change)="toggleSelectAll()"
         [disabled]="invitees.length === 0"
       >
-        <span class="regular-title-medium">{{
+        <span class="regular-title-small">{{
           'newMeeting.section.meetingInvitees.checkbox.all' | translate
         }}</span>
       </mat-checkbox>
@@ -21,14 +22,14 @@ import { Invitee } from '../../../../../models/meetings.mode';
       <div class="wrapper">
         <div class="content-wrapper">
           <mat-checkbox
-            [id]="'checkbox-' + invitee.id"
+            color="primary"
             (change)="toggleSelection(invitee)"
             [checked]="!!selected.get(invitee.id)"
             class="checkbox"
           >
             <div class="content">
-              <span class="regular-title-medium">{{ invitee.name }}</span>
-              <span class="regular-body-medium invitee-position">{{
+              <span class="regular-title-small">{{ invitee.name }}</span>
+              <span class="regular-body-small invitee-position">{{
                 invitee?.position ?? ''
               }}</span>
             </div>
