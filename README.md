@@ -28,8 +28,10 @@ Angular Version 16.0.4
 - [x] Name selection
 - [x] Date&time selection
 - [x] Invitees selection
-- [ ] Location/address selection
+- [x] Location/address selection
 - [ ] Visual Regression Testing
+- [ ] Local Store
+- [ ] Google Maps Places API (retrieving location)
 
 I've tried to communicate with Google Maps API (Autocomplete Places) but found it tricky (especially with angular v16) so finally I resigned for now. I may be a feature worth considering in the further developement. 
 - https://github.com/skynet2/ngx-google-places-autocomplete
