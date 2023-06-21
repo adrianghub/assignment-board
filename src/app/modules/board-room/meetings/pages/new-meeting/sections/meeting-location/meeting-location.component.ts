@@ -73,15 +73,16 @@ export class MeetingLocationComponent {
       return;
     }
 
+    selectedItem.checked = true;
+    selectedItem.control.enable();
+
     this.items.forEach((item) => {
       if (item.type !== selectedItem.type) {
         item.checked = false;
         item.control.reset('');
         item.control.disable();
+        item.emitter.emit('');
       }
     });
-
-    selectedItem.checked = true;
-    selectedItem.control.enable();
   }
 }
