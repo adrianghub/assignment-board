@@ -32,6 +32,8 @@ Angular Version 16.0.4
 - [ ] Visual Regression Testing
 
 I've tried to communicate with Google Maps API (Autocomplete Places) but found it tricky to communicate with the app so finally I resigned. I may be a feature worth considering in the further developement. 
+- https://github.com/skynet2/ngx-google-places-autocomplete
+- https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
 
 ## Futher work
 
