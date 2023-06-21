@@ -12,7 +12,7 @@ import { Invitee } from '../../../../../models/meetings.mode';
         (change)="toggleSelectAll()"
         [disabled]="invitees.length === 0"
       >
-        <span class="regular-title-small">{{
+        <span class="semi-bold-title-medium">{{
           'newMeeting.section.meetingInvitees.checkbox.all' | translate
         }}</span>
       </mat-checkbox>
@@ -28,8 +28,8 @@ import { Invitee } from '../../../../../models/meetings.mode';
             class="checkbox"
           >
             <div class="content">
-              <span class="regular-title-small">{{ invitee.name }}</span>
-              <span class="regular-body-small invitee-position">{{
+              <span class="semi-bold-title-medium">{{ invitee.name }}</span>
+              <span class="regular-body-medium invitee-position">{{
                 invitee?.position ?? ''
               }}</span>
             </div>

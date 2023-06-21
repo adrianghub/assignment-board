@@ -1,7 +1,8 @@
 {
   "misc": {
     "validationError": {
-      "required": "This value is required."
+      "required": "This value is required.",
+      "pattern": "Provide valid format."
     }
   }
 }

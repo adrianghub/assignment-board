@@ -21,7 +21,6 @@ import { MeetingsService } from '../../services/meetings.service';
     <koia-layout-header [backUrl]="backUrl" />
 
     <div class="wrapper">
-
       <!-- MAIN CONTENT -->
       <div class="main-content">
         <h1 class="semi-bold-headline-large headline">
@@ -61,9 +60,12 @@ import { MeetingsService } from '../../services/meetings.service';
           {{ 'newMeeting.section.meetingLocation.header' | translate }}
         </h2>
 
-        <koia-meeting-location class="section"></koia-meeting-location>
+        <koia-meeting-location
+          class="section"
+          (addressChanged)="updateQueryParams({ address: $event })"
+          (onlineChanged)="updateQueryParams({ onlineLink: $event })"
+        ></koia-meeting-location>
       </div>
-
 
       <!-- ASIDE -->
       <div class="aside">
