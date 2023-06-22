@@ -11,7 +11,7 @@ import { MeetingType } from '../../../../models/meetings.mode';
     ></koia-selectable-button-group>
   `,
 })
-export class MeetingTypesComponent {
+export class MeetingTypesSection {
   @Input() types!: MeetingType[];
 
   @Output() selected = new EventEmitter<MeetingType>();

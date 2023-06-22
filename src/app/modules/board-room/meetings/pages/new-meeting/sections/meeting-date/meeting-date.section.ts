@@ -10,14 +10,6 @@ import { TimeRange } from '../../../../models/meetings.mode';
 @Component({
   selector: 'koia-meeting-date',
   template: `
-    <style>
-      :host {
-        display: flex;
-        gap: 16px;
-        max-width: 160px;
-      }
-    </style>
-
     <koia-date-picker
       [label]="'newMeeting.section.meetingDate.label' | translate"
       [min]="min"
@@ -30,8 +22,9 @@ import { TimeRange } from '../../../../models/meetings.mode';
       (changed)="changeTime($event)"
     ></koia-time-picker-range>
   `,
+  styleUrls: ['./meeting-date.section.scss'],
 })
-export class MeetingDateComponent implements OnInit {
+export class MeetingDateSection implements OnInit {
   @Output() dateChanged = new EventEmitter<string>();
   @Output() timeChanged = new EventEmitter<TimeRange>();
 

@@ -20,28 +20,6 @@ type InputType = 'text';
   standalone: true,
   selector: 'koia-input',
   template: `
-    <style>
-      :host,
-      .form-field {
-        width: 100%;
-      }
-
-      .wrapper {
-        display: flex;
-        align-items: center;
-        position: relative;
-      }
-
-      .icon {
-        margin: 0 8px;
-      }
-
-      .clear {
-        position: absolute;
-        right: -5px;
-      }
-    </style>
-
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>{{ label }}</mat-label>
 
@@ -72,6 +50,7 @@ type InputType = 'text';
       </mat-error>
     </mat-form-field>
   `,
+  styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
