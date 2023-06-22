@@ -1,7 +1,7 @@
 import type { Routes } from '@angular/router';
 import { LayoutComponent } from 'src/app/core/layout/layout.component';
-import { BoardMeetingsComponent } from './meetings/pages/board-meetings/board-meetings.component';
-import { NewMeetingComponent } from './meetings/pages/new-meeting/new-meeting.component';
+import { BoardMeetingsPage } from './meetings/pages/board-meetings/board-meetings.page';
+import { NewMeetingPage } from './meetings/pages/new-meeting/new-meeting.page';
 
 export const boardRoomRoutes: Routes = [
   {
@@ -10,11 +10,11 @@ export const boardRoomRoutes: Routes = [
     children: [
       {
         path: 'meetings',
-        component: BoardMeetingsComponent,
+        component: BoardMeetingsPage,
       },
       {
         path: 'meetings/new-meeting',
-        component: NewMeetingComponent,
+        component: NewMeetingPage,
       },
       {
         path: '**',

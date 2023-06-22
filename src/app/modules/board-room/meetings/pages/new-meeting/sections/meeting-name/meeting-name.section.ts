@@ -11,7 +11,7 @@ import { FormControl, Validators } from '@angular/forms';
     ></koia-input>
   `,
 })
-export class MeetingNameComponent {
+export class MeetingNameSection {
   @Output() nameChanged = new EventEmitter<string>();
 
   name = new FormControl<string>('', {

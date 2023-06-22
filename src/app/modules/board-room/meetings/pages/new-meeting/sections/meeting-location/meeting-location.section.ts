@@ -40,9 +40,9 @@ interface LocationItem {
       </div>
     </div>
   `,
-  styleUrls: ['./meeting-location.component.scss'],
+  styleUrls: ['./meeting-location.section.scss'],
 })
-export class MeetingLocationComponent {
+export class MeetingLocationSection {
   @Output() addressChanged = new EventEmitter<string>();
   @Output() onlineChanged = new EventEmitter<string>();
 

@@ -27,6 +27,16 @@
             "style": "kebab-case"
           }
         ],
+        "@angular-eslint/component-class-suffix": [
+          "error",
+          {
+            "suffixes": [
+              "Page",
+              "Section",
+              "Component"
+            ]
+          }
+        ],
         "@angular-eslint/no-output-on-prefix": "off",
         "@typescript-eslint/consistent-type-imports": "off"
       }

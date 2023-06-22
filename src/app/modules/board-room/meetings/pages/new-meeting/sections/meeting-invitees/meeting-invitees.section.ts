@@ -30,9 +30,9 @@ import { MeetingsService } from '../../../../services/meetings.service';
       ></koia-invitees-list>
     </ng-container>
   `,
-  styleUrls: ['./meeting-invitees.component.scss'],
+  styleUrls: ['./meeting-invitees.section.scss'],
 })
-export class MeetingInviteesComponent implements OnInit {
+export class MeetingInviteesSection implements OnInit {
   @Input() inviteesType!: InviteesType;
   @Output() selectedTab = new EventEmitter<Tab>();
 

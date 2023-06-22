@@ -16,7 +16,7 @@ import { MeetingsService } from '../../services/meetings.service';
 
 @Component({
   selector: 'koia-new-meeting',
-  styleUrls: ['./new-meeting.component.scss'],
+  styleUrls: ['./new-meeting.page.scss'],
   template: `
     <koia-layout-header [backUrl]="backUrl" />
 
@@ -84,7 +84,7 @@ import { MeetingsService } from '../../services/meetings.service';
     </div>
   `,
 })
-export class NewMeetingComponent implements OnInit {
+export class NewMeetingPage implements OnInit {
   meetingTypes: MeetingType[] = [];
   inviteesType!: InviteesType;
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TranslateModule } from '@ngx-translate/core';
 import { Tab } from 'src/app/shared/models/shared.model';
@@ -23,7 +23,7 @@ import { Tab } from 'src/app/shared/models/shared.model';
     </nav>
     <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
   `,
-
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, MatTabsModule, TranslateModule],
 })
 export class TabsComponent {

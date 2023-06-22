@@ -12,13 +12,6 @@ interface SelectableButton {
   standalone: true,
   selector: 'koia-selectable-button-group',
   template: `
-    <style>
-      :host {
-        display: flex;
-        gap: 16px;
-      }
-    </style>
-
     <ng-container *ngFor="let item of items">
       <koia-button
         type="primary"
@@ -29,6 +22,7 @@ interface SelectableButton {
       />
     </ng-container>
   `,
+  styleUrls: ['./selectable-button-group.component.scss'],
   imports: [CommonModule, ButtonComponent, TranslateModule],
 })
 export class SelectableButtonGroupComponent {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -8,19 +8,7 @@ import { convertTime } from 'src/app/shared/utils/date.utils';
 @Component({
   standalone: true,
   selector: 'koia-time-picker',
-  template: ` <style>
-      :host,
-      .form-field,
-      .input {
-        cursor: pointer;
-      }
-
-      .form-field {
-        max-width: 110px;
-      }
-    </style>
-
-    <mat-form-field
+  template: ` <mat-form-field
       class="form-field"
       appearance="outline"
       (click)="picker.open()"
@@ -36,6 +24,8 @@ import { convertTime } from 'src/app/shared/utils/date.utils';
       #picker
       (timeChanged)="emitChangedTime($event)"
     />`,
+  styleUrls: ['./time-picker.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NgxMaterialTimepickerModule,
     MatInputModule,

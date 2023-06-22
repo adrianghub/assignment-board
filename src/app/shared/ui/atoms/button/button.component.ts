@@ -30,8 +30,8 @@ import { buttonSizes, iconSizes } from './button.config';
     </div>
   </button>`,
   styleUrls: ['./button.component.scss'],
-  imports: [CommonModule, MatButtonModule, IconsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, MatButtonModule, IconsModule],
 })
 export class ButtonComponent {
   @Input() type: ButtonType = 'primary';

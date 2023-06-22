@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {
   MatDatepickerInputEvent,
@@ -14,15 +14,6 @@ import { ButtonComponent } from '../button/button.component';
   standalone: true,
   selector: 'koia-date-picker',
   template: `
-    <style>
-      :host,
-      .form-field,
-      .input {
-        width: 100%;
-        cursor: pointer;
-      }
-    </style>
-
     <mat-form-field
       class="form-field"
       (click)="picker.open()"
@@ -55,6 +46,8 @@ import { ButtonComponent } from '../button/button.component';
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   `,
+  styleUrls: ['./date-picker.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     ButtonComponent,

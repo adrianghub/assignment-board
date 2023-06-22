@@ -17,9 +17,9 @@ type BoardMeetingsRoutes = 'new-meeting';
       />
     </koia-layout-header>
   `,
-  styleUrls: ['./board-meetings.component.scss'],
+  styleUrls: ['./board-meetings.page.scss'],
 })
-export class BoardMeetingsComponent {
+export class BoardMeetingsPage {
   basePath = basePath;
 
   constructor(private router: Router) {}
