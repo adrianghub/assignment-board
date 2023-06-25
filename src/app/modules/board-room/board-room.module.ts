@@ -6,6 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { CoreModule } from 'src/app/core/core.module';
 import { UrlService } from 'src/app/core/services/url.service';
 import { ButtonComponent } from 'src/app/shared/ui/atoms/button/button.component';
@@ -53,6 +54,7 @@ import { MeetingsService } from './meetings/services/meetings.service';
     TimePickerRangeComponent,
     TabsComponent,
     MatCheckboxModule,
+    TranslateModule,
   ],
   providers: [MeetingsService, UrlService],
 })
