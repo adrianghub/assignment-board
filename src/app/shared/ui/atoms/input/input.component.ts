@@ -7,6 +7,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -74,7 +75,7 @@ export class InputComponent implements OnInit {
   @Output() cleared = new EventEmitter<Event>();
 
   ngOnInit() {
-    this.control.valueChanges.subscribe((value) => {
+    this.control.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
       this.changed.emit(value);
     });
   }

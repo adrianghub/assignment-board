@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { take } from 'rxjs';
 import { UrlService } from 'src/app/core/services/url.service';
 import {
@@ -107,7 +108,7 @@ export class NewMeetingPage implements OnInit {
 
     this.urlService
       .getQueryParams()
-      .pipe(take(1))
+      .pipe(take(1), takeUntilDestroyed())
       .subscribe((params) => {
         this.meetingTypes = this.meetingTypes.map((item) =>
           item.key === params['type']

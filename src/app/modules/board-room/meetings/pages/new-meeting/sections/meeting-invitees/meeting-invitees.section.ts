@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl } from '@angular/forms';
 import { UrlService } from 'src/app/core/services/url.service';
 import { Tab } from 'src/app/shared/models/shared.model';
@@ -64,11 +65,14 @@ export class MeetingInviteesSection implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.urlService.getQueryParams().subscribe((params) => {
-      this.inviteesType =
-        (params['invitees'] as InviteesType) || this.inviteesType;
-      this.loadInvitees();
-    });
+    this.urlService
+      .getQueryParams()
+      .pipe(takeUntilDestroyed())
+      .subscribe((params) => {
+        this.inviteesType =
+          (params['invitees'] as InviteesType) || this.inviteesType;
+        this.loadInvitees();
+      });
   }
 
   loadInvitees(): void {
