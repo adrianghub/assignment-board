@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { CoreModule } from 'src/app/core/core.module';
 import { UrlService } from 'src/app/core/services/url.service';
 import { ButtonComponent } from 'src/app/shared/ui/atoms/button/button.component';
@@ -55,6 +57,8 @@ import { MeetingsService } from './meetings/services/meetings.service';
     TabsComponent,
     MatCheckboxModule,
     TranslateModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule,
   ],
   providers: [MeetingsService, UrlService],
 })
