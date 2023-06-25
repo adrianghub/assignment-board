@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   EventEmitter,
   Input,
   OnInit,
@@ -74,9 +75,13 @@ export class InputComponent implements OnInit {
   @Output() changed = new EventEmitter<string | null>();
   @Output() cleared = new EventEmitter<Event>();
 
+  constructor(private destroyRef: DestroyRef) {}
+
   ngOnInit() {
-    this.control.valueChanges.pipe(takeUntilDestroyed()).subscribe((value) => {
-      this.changed.emit(value);
-    });
+    this.control.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((value) => {
+        this.changed.emit(value);
+      });
   }
 }

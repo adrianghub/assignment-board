@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl } from '@angular/forms';
 import { UrlService } from 'src/app/core/services/url.service';
@@ -61,13 +68,14 @@ export class MeetingInviteesSection implements OnInit {
 
   constructor(
     private meetingService: MeetingsService,
-    private urlService: UrlService
+    private urlService: UrlService,
+    private destroyRef: DestroyRef
   ) {}
 
   ngOnInit(): void {
     this.urlService
       .getQueryParams()
-      .pipe(takeUntilDestroyed())
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((params) => {
         this.inviteesType =
           (params['invitees'] as InviteesType) || this.inviteesType;
